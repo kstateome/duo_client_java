@@ -46,7 +46,7 @@ public class Http {
   private OkHttpClient httpClient;
   private SortedMap<String, String> additionalDuoHeaders = new TreeMap<String, String>();
 
-  public static SimpleDateFormat RFC_2822_DATE_FORMAT = 
+  public static SimpleDateFormat RFC_2822_DATE_FORMAT =
       new SimpleDateFormat("EEE', 'dd' 'MMM' 'yyyy' 'HH:mm:ss' 'Z", Locale.US);
 
   public static MediaType FORM_ENCODED = MediaType.parse("application/x-www-form-urlencoded");
@@ -199,7 +199,7 @@ public class Http {
    * @param inMethod The method for the http request
    * @param inHost   The api host provided by Duo and found in the Duo admin panel
    * @param inUri    The endpoint for the request
-   * 
+   *
    * @deprecated Use the HttpBuilder instead
    */
   public Http(String inMethod, String inHost, String inUri) {
@@ -212,7 +212,7 @@ public class Http {
    * @param inHost   The api host provided by Duo and found in the Duo admin panel
    * @param inUri    The endpoint for the request
    * @param timeout  The timeout for the http request
-   * 
+   *
    * @deprecated Use the HttpBuilder instead
    */
   protected Http(String inMethod, String inHost, String inUri, int timeout) {
@@ -510,12 +510,12 @@ public class Http {
      * @param host   the Duo host
      * @param uri    the API endpoint for the request
      */
-    protected HttpBuilder(String method, String host, String uri) {
+    public HttpBuilder(String method, String host, String uri) {
       super(method, host, uri);
     }
 
     @Override
-    protected Http createClient(String method, String host, String uri, int timeout) {
+    public Http createClient(String method, String host, String uri, int timeout) {
       return new Http(method, host, uri, timeout);
     }
   }
@@ -577,7 +577,7 @@ public class Http {
      * @param value Header's value
      * @return the Builder
      */
-    public ClientBuilder<T> addAdditionalDuoHeader(String name, String value) 
+    public ClientBuilder<T> addAdditionalDuoHeader(String name, String value)
         throws IllegalArgumentException {
       validateXDuoHeader(name, value);
       this.additionalDuoHeaders.put(name.toLowerCase(), value);
