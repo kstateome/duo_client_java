@@ -32,12 +32,14 @@
           <!-- <failBuildOnCVSS>8</failBuildOnCVSS> -->
           <nvdApiKey>${nvd.api.key}</nvdApiKey>
           <ossIndexServerId>ossindex</ossIndexServerId>
+          <scanPlugins>false</scanPlugins>
+          <autoUpdate>true</autoUpdate>
         </configuration>
         <inherited>false</inherited>
         <executions>
           <execution>
             <id>aggregate-check</id>
-            <phase>verify</phase>
+            <phase>compile</phase>
             <goals>
               <goal>aggregate</goal>
             </goals>
